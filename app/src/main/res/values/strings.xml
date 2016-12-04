@@ -1,3 +1,43 @@
 <resources>
     <string name="app_name">Hangman</string>
+    <string name="top_info">Enter a letter or word :</string>
+    <string name="error">Error! Only single characters or words are accepted.</string>
+    <string-array name="aryEasy">
+        <item>prideful</item>
+        <item>shortest</item>
+        <item>happy</item>
+        <item>hats</item>
+        <item>planes</item>
+        <item>silver</item>
+        <item>kitten</item>
+        <item>joyful</item>
+        <item>socks</item>
+        <item>printer</item>
+    </string-array>
+
+    <string-array name="aryMedium">
+        <item>rhymes</item>
+        <item>invalid</item>
+        <item>crayon</item>
+        <item>misspelt</item>
+        <item>buffalo</item>
+        <item>funny</item>
+        <item>cowboy</item>
+        <item>church</item>
+        <item>thousand</item>
+        <item>coffee</item>
+    </string-array>
+
+    <string-array name="aryHard">
+        <item>pixel</item>
+        <item>czar</item>
+        <item>cobweb</item>
+        <item>exempt</item>
+        <item>whom</item>
+        <item>ivy</item>
+        <item>misspelt</item>
+        <item>nervous</item>
+        <item>linux</item>
+        <item>jag</item>
+    </string-array>
 </resources>
