@@ -11,6 +11,7 @@ public class Presenter {
     public Presenter(View myView){
         view = myView;
         hangman = hangman.getInstance();
+        hangman.setResources(view.getResources());
 
 
     }
@@ -19,13 +20,14 @@ public class Presenter {
 
     // --------------------------------------------------------------- public methods
 
-    public void guess(){
+    public void guess() {
         hangman.setGuess(view.getGuess());
-
-        if (hangman.errorCheck()){
-            view.setText("true", "true");
+        if (hangman.makeGuess()) {
+            view.setText(hangman.getWord(), hangman.getOutput());
         } else {
-            view.setText("false", "false");
+            view.showError(hangman.getError());
         }
+
+
     }
 }

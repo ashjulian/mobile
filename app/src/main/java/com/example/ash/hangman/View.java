@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class View extends AppCompatActivity {
 
@@ -15,6 +16,7 @@ public class View extends AppCompatActivity {
     private TextView lblWord;
     private ImageButton btnGuess;
     private ImageView imgLives;
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +59,10 @@ public class View extends AppCompatActivity {
 
     }
 
-    public void showError(){
-
+    public void showError(String message){
+        // display toast message if already guessed
+        toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+        toast.show();
     }
 
     // ------------------------------------------------------------------------ private methods

@@ -1,8 +1,13 @@
 package com.example.ash.hangman;
 
-/**
- * Created by Ash on 2016-12-04.
- */
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-public class MenuView {
+public class MenuView extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu_view);
+    }
 }

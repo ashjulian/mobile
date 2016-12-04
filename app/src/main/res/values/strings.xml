@@ -2,6 +2,11 @@
     <string name="app_name">Hangman</string>
     <string name="top_info">Enter a letter or word :</string>
     <string name="error">Error! Only single characters or words are accepted.</string>
+    <string name="errLong">Error! Your guess is too long.</string>
+    <string name="limits">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
+    <string name="menuDif">Change the difficulty : </string>
+    <string name="reset">Reset or return to your game : </string>
+
     <string-array name="aryEasy">
         <item>prideful</item>
         <item>shortest</item>
