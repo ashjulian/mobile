@@ -46,7 +46,7 @@ public class Hangman {
         mediumWords = new String[10];
         hardWords = new String[10];
 
-        aryWords = resources.getStringArray(R.array.aryEasy);
+        //aryWords = resources.getStringArray(R.array.aryEasy);
         guess = "";
         errLong = "";
         errOther = "";
@@ -63,6 +63,7 @@ public class Hangman {
     public void setResources(Resources myResources) {
         // pass resources from the view
         resources = myResources;
+        aryWords = resources.getStringArray(R.array.aryEasy);
         easyWords = resources.getStringArray(R.array.aryEasy);
         mediumWords = resources.getStringArray(R.array.aryMedium);
         hardWords = resources.getStringArray(R.array.aryHard);
@@ -114,9 +115,9 @@ public class Hangman {
         }
     }
 
-    private void randomize(){
+    public void randomize(){
         int number = (int) (Math.random() * 10);
-        word = aryWords[number];
+        word = "word";
     }
 
     // ------------------------------------------------ public methods
@@ -141,13 +142,12 @@ public class Hangman {
                 break;
         }
 
-
     }
 
     public Boolean makeGuess(){
         if (errorCheck()) {
             StringBuilder sb = new StringBuilder();
-            sb.append("Your previous guesses : ").append(System.getProperty("line.separator"));
+            sb.append(resources.getString(R.string.guessText)).append(System.getProperty("line.separator"));
             for(int i = 0; i < aryGuess.size(); i++) {
                 sb.append(aryGuess.get(i)).append(" ");
             }
@@ -156,5 +156,9 @@ public class Hangman {
         } else {
             return false;
         }
+    }
+
+    public void reset(){
+        aryGuess.clear();
     }
 }

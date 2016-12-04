@@ -6,12 +6,13 @@
     <string name="limits">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
     <string name="menuDif">Change the difficulty : </string>
     <string name="reset">Reset or return to your game : </string>
+    <string name="guessText">Your previous guesses : </string>
 
     <string-array name="aryEasy">
         <item>prideful</item>
         <item>shortest</item>
         <item>happy</item>
-        <item>hats</item>
+        <item>delivery</item>
         <item>planes</item>
         <item>silver</item>
         <item>kitten</item>

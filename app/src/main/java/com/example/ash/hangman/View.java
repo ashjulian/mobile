@@ -48,9 +48,9 @@ public class View extends AppCompatActivity {
     // ------------------------------------------------------------------------- public methods
     public String getGuess(){ return txtGuess.getText().toString();}
 
-    public void setText(String guess, String output){
+    public void setText(String word, String output){
 
-        lblWord.setText(guess);
+        lblWord.setText(word);
         lblGuesses.setText(output);
 
     }

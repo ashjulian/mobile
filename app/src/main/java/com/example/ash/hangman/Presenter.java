@@ -22,6 +22,8 @@ public class Presenter {
 
     public void guess() {
         hangman.setGuess(view.getGuess());
+        hangman.randomize();
+
         if (hangman.makeGuess()) {
             view.setText(hangman.getWord(), hangman.getOutput());
         } else {
