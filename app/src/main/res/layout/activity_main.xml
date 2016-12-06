@@ -11,64 +11,72 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.ash.hangman.View">
 
-    <EditText
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/imgLives"
+        android:gravity="center"
+        android:layout_below="@+id/btnGuess"
+        android:layout_alignParentStart="true" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_marginTop="25dp"
-        android:id="@+id/txtGuess"
-        android:gravity="center"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:digits="@string/limits"/>
+        android:id="@+id/lblGuesses"
+        android:layout_marginBottom="15dp"
+        android:textSize="18dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_menu_myplaces"
         android:id="@+id/btnGuess"
-        android:layout_below="@+id/txtGuess"
         android:gravity="center"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/txtGuess"
+        android:layout_alignParentEnd="true" />
 
-    <ImageView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/imgLives"
-        android:layout_below="@+id/btnGuess"
-        android:layout_marginTop="79dp"
-        android:gravity="center"
-        android:layout_alignStart="@+id/txtGuess" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/lblGuesses"
-        android:layout_alignStart="@+id/lblGuesses"
-        android:layout_marginBottom="15dp"
-        android:textSize="64dp"
+        android:layout_marginBottom="30dp"
+        android:textSize="24dp"
         android:id="@+id/lblWord"
-        android:layout_alignParentEnd="true"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:layout_above="@+id/lblGuesses" />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lblGuesses"
-        android:layout_marginBottom="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:maxLength="10"
+        android:id="@+id/txtGuess"
+        android:gravity="center"
+        android:digits="@string/limits"
+        android:layout_below="@+id/lblTopInfo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:text="@string/top_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblTopInfo"
+        android:textSize="18dp"
+        android:layout_marginTop="62dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/bottom_bar"
         android:layout_alignParentTop="true"
-        android:id="@+id/lblTopInfo"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/imgHeader"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/lblGuesses" />
 
 </RelativeLayout>

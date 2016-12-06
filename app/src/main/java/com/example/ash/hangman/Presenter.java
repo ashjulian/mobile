@@ -10,9 +10,13 @@ public class Presenter {
 
     public Presenter(View myView){
         view = myView;
-        hangman = hangman.getInstance();
-        hangman.setResources(view.getResources());
+        hangman = hangman.getInstance(view.getResources());
 
+        view.setText(hangman.getWord(), hangman.getOutput());
+
+        if (hangman.getDifficultyLevel() != -1) {
+            view.showDifficulty(hangman.getDifficultyMsg());
+        }
 
     }
 
@@ -22,10 +26,9 @@ public class Presenter {
 
     public void guess() {
         hangman.setGuess(view.getGuess());
-        hangman.randomize();
 
-        if (hangman.makeGuess()) {
-            view.setText(hangman.getWord(), hangman.getOutput());
+        if (hangman.output()) {
+            view.setText(hangman.getWord(), hangman.getOutput() + "guess : " + hangman.getGuessCount());
         } else {
             view.showError(hangman.getError());
         }
