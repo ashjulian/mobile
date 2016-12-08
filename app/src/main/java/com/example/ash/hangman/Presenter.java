@@ -18,6 +18,12 @@ public class Presenter {
             view.showDifficulty(hangman.getDifficultyMsg());
         }
 
+        if (hangman.getGuessCount() == 0) {
+            view.gameOver();
+        } else{
+            view.gameStart();
+        }
+
     }
 
     // ----------------------------------------------------------------- private methods
@@ -28,7 +34,14 @@ public class Presenter {
         hangman.setGuess(view.getGuess());
 
         if (hangman.output()) {
+
             view.setText(hangman.getWord(), hangman.getOutput() + "guess : " + hangman.getGuessCount());
+            view.setImage(hangman.getGuessCount(), hangman.getDifficultyLevel());
+
+            if (hangman.getGuessCount() == 0){
+                    view.gameOver();
+            }
+
         } else {
             view.showError(hangman.getError());
         }

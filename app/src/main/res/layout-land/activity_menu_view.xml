@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgReset"
+        android:background="@mipmap/btn_reset_up"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/imgReturn"
+        android:layout_marginEnd="38dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgReturn"
+        android:background="@mipmap/btn_resume_up"
+        android:layout_marginEnd="62dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgHard"
+        android:background="@mipmap/btn_hard_up"
+        android:layout_above="@+id/imgReset"
+        android:layout_alignEnd="@+id/imgMedium" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgMedium"
+        android:background="@mipmap/btn_medium_up"
+        android:layout_above="@+id/imgHard"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgEasy"
+        android:background="@mipmap/btn_easy_up"
+        android:layout_above="@+id/imgMedium"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

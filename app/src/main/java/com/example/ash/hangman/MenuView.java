@@ -7,58 +7,86 @@ import android.widget.ImageButton;
 public class MenuView extends AppCompatActivity {
 
     private MenuPresenter presenter;
-    private ImageButton imgEasy;
-    private ImageButton imgMedium;
-    private ImageButton imgHard;
-    private ImageButton imgReset;
-    private ImageButton imgReturn;
+    private ImageButton btnEasy;
+    private ImageButton btnMedium;
+    private ImageButton btnHard;
+    private ImageButton btnReset;
+    private ImageButton btnReturn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_view);
 
-        imgEasy = (ImageButton) findViewById(R.id.imgEasy);
-        imgMedium = (ImageButton) findViewById(R.id.imgMedium);
-        imgHard = (ImageButton) findViewById(R.id.imgHard);
-        imgReset = (ImageButton) findViewById(R.id.imgReset);
-        imgReturn = (ImageButton) findViewById(R.id.imgReturn);
+        // constructing the buttons
+        btnEasy = (ImageButton) findViewById(R.id.imgEasy);
+        btnMedium = (ImageButton) findViewById(R.id.imgMedium);
+        btnHard = (ImageButton) findViewById(R.id.imgHard);
+        btnReset = (ImageButton) findViewById(R.id.imgReset);
+        btnReturn = (ImageButton) findViewById(R.id.imgReturn);
 
-        imgEasy.setOnClickListener(new android.view.View.OnClickListener(){
+        // wiring up listeners
+        btnEasy.setOnClickListener(new android.view.View.OnClickListener(){
             @Override
             public void onClick(android.view.View v) {
                 presenter.changeDifficulty(0);
             }
         });
 
-        imgMedium.setOnClickListener(new android.view.View.OnClickListener(){
+        btnMedium.setOnClickListener(new android.view.View.OnClickListener(){
             @Override
             public void onClick(android.view.View v) {
                 presenter.changeDifficulty(1);
             }
         });
 
-        imgHard.setOnClickListener(new android.view.View.OnClickListener(){
+        btnHard.setOnClickListener(new android.view.View.OnClickListener(){
             @Override
             public void onClick(android.view.View v) {
                 presenter.changeDifficulty(2);
             }
         });
 
-        imgReset.setOnClickListener(new android.view.View.OnClickListener(){
+        btnReset.setOnClickListener(new android.view.View.OnClickListener(){
             @Override
             public void onClick(android.view.View v) {
                 presenter.reset();
             }
         });
 
-        imgReturn.setOnClickListener(new android.view.View.OnClickListener(){
+        btnReturn.setOnClickListener(new android.view.View.OnClickListener(){
             @Override
             public void onClick(android.view.View v) {
                 presenter.close();
             }
         });
+    }
 
+    @Override
+    public void onResume(){
+        super.onResume();
         presenter = new MenuPresenter(this);
+    }
+
+    // -------------------------------------------------------------- public methods
+    public void disableHard(){
+        // enable and disable buttons
+        btnEasy.setEnabled(true);
+        btnMedium.setEnabled(true);
+        btnHard.setEnabled(false);
+    }
+
+    public void disableEasy(){
+        // enable and disable buttons
+        btnEasy.setEnabled(false);
+        btnMedium.setEnabled(true);
+        btnHard.setEnabled(true);
+    }
+
+    public void disableMedium(){
+        // enable and disable buttons
+        btnEasy.setEnabled(true);
+        btnMedium.setEnabled(false);
+        btnHard.setEnabled(true);
     }
 }

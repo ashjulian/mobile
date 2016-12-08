@@ -10,6 +10,14 @@ public class MenuPresenter {
     public MenuPresenter(MenuView myMenuView){
         menuView = myMenuView;
         hangman = hangman.getInstance(menuView.getResources());
+
+        if (hangman.getDifficultyLevel() == 1) {
+            menuView.disableMedium();
+        } else if (hangman.getDifficultyLevel() == 2){
+            menuView.disableHard();
+        } else {
+            menuView.disableEasy();
+        }
     }
 
     // ------------------------------------------------------- public methods

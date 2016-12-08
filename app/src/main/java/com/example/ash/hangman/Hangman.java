@@ -1,6 +1,7 @@
 package com.example.ash.hangman;
 
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -98,6 +99,7 @@ public class Hangman {
         if (guess.length() == 1) {
             // add guess to array
             aryGuess.add(guess);
+            Boolean flag = false;
 
             // convert to array of chars
             char[] targetChars = word.toCharArray();
@@ -112,15 +114,22 @@ public class Hangman {
                 if (guessChar == targetChars[n]) {
                     // this character matches the answers character
                     guessWord += "" + guessChar;
+                    flag = true;
 
                 } else {
                     // it does not
                     if (guessedChars[n] == '-') {
                         guessWord += "-";
+
                     } else {
                         guessWord += guessedChars[n];
                     }
                 }
+            }
+
+            // check to see if guess was correct
+            if (!flag) {
+                guessCount--;
             }
 
             return true;
@@ -133,8 +142,11 @@ public class Hangman {
         else if (guess.length() > 1){
             aryGuess.add(guess);
 
+            // check to see if guess is the same as word
             if (guess.equals(word)){
                 guessWord = word;
+            } else {
+                guessCount --;
             }
             return true;
         }
@@ -158,17 +170,14 @@ public class Hangman {
     }
 
     private Boolean checkDuplicates(){
-        boolean duplicates = false;
-
+        // check for duplicate guesses
         for (int i = 0; i < aryGuess.size(); i++){
             if (guess.equals(aryGuess.get(i))) {
-                duplicates = true;
                 errorMsg = resources.getString(R.string.dupGuess);
-            } else {
-                duplicates = false;
+                return true;
             }
         }
-        return duplicates;
+        return false;
     }
 
     // ------------------------------------------------ public methods
@@ -191,29 +200,31 @@ public class Hangman {
     }
 
     public Boolean output(){
-        if (makeGuess()) {
-            if (checkWin()){
-                output = resources.getString(R.string.win);
-            } else if (guess.equals("")){
-                output = resources.getString(R.string.guessText);;
-            } else {
-                // lower the guess count
-                guessCount--;
-                StringBuilder sb = new StringBuilder();
-                sb.append(resources.getString(R.string.guessText)).append(System.getProperty("line.separator"));
-                for(int i = 0; i < aryGuess.size(); i++) {
-                    sb.append(aryGuess.get(i)).append(" ");
+        if (!checkDuplicates()){
+            if (makeGuess()) {
+                if (checkWin()){
+                    output = resources.getString(R.string.win);
+                } else if (guess.equals("")){
+                    output = resources.getString(R.string.guessText);;
+                } else {
+                    StringBuilder sb = new StringBuilder();
+                    sb.append(resources.getString(R.string.guessText)).append(System.getProperty("line.separator"));
+                    for(int i = 0; i < aryGuess.size(); i++) {
+                        sb.append(aryGuess.get(i)).append(" ");
+                    }
+                    output = sb.toString();
                 }
-                output = sb.toString();
-            }
 
-            return true;
-        } else {
-            return false;
+                return true;
+            } else {
+                return false;
+            }
         }
+        return false;
     }
 
     public Boolean checkWin() {
+        // check to see if game has been won
         if (guessWord.equals(word)){
             return true;
         } else {
@@ -223,12 +234,14 @@ public class Hangman {
 
     public void reset(){
 
+        // reset the game
         Arrays.fill(aryWords, null);
         guessWord = "";
         output = resources.getString(R.string.guessText);
 
         aryGuess.clear();
 
+        // set the difficulty level
         if (difficultyLevel == 1){
             aryWords = resources.getStringArray(R.array.aryMedium);
             guessCount = 6;

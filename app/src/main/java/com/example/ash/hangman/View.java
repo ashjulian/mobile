@@ -1,7 +1,6 @@
 package com.example.ash.hangman;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,16 +33,16 @@ public class View extends AppCompatActivity {
         lblWord = (TextView) findViewById(R.id.lblWord);
         lblTopInfo = (TextView) findViewById(R.id.lblTopInfo);
         imgLives = (ImageView) findViewById(R.id.imgLives);
-        imgLives.setImageResource(R.drawable.hangman);
+
         imgHeader = (ImageView) findViewById(R.id.imgHeader);
 
         Typeface chalk = Typeface.createFromAsset(getAssets(), "fonts/chalk-dash.ttf");
-        Typeface samba = Typeface.createFromAsset(getAssets(), "fonts/samba.ttf");
+        Typeface happy = Typeface.createFromAsset(getAssets(), "fonts/happy-sans.ttf");
 
         lblWord.setTypeface(chalk);
-        lblGuesses.setTypeface(samba);
+        lblGuesses.setTypeface(happy);
         txtGuess.setTypeface(chalk);
-        lblTopInfo.setTypeface(samba);
+        lblTopInfo.setTypeface(happy);
 
         // get reference and setup event listeners for buttons
         btnGuess = (ImageButton) findViewById(R.id.btnGuess);
@@ -101,6 +100,79 @@ public class View extends AppCompatActivity {
         // construct intent object
         Intent intent = new Intent("com.example.ash.hangman.MENU");
         startActivity(intent);
+    }
+
+    public void setImage(int guessCount, int difficulty){
+        if (difficulty == 1){
+            // medium mode
+            if (guessCount == 0){
+                // game over
+                imgLives.setImageResource(R.mipmap.hangman_game_guess8_easy);
+            } else if (guessCount == 1) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess6_easy);
+            } else if (guessCount == 2) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess5_easy);
+            } else if (guessCount == 3) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess4_easy);
+            } else if (guessCount == 4) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess3_easy);
+            } else if (guessCount == 5) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess2_easy);
+            } else {
+                // game start
+                imgLives.setImageResource(R.mipmap.hangman_game_start);
+            }
+
+        } else if (difficulty == 2){
+            // hard mode
+            if (guessCount == 0){
+                // game over
+                imgLives.setImageResource(R.mipmap.hangman_game_guess8_easy);
+            } else if (guessCount == 1) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess6_easy);
+            } else if (guessCount == 2) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess4_easy);
+            } else if (guessCount == 3) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess2_easy);
+            } else if (guessCount == 4) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess1_easy);
+            } else {
+                // game start
+                imgLives.setImageResource(R.mipmap.hangman_game_start);
+            }
+
+        } else {
+            // easy mode
+            if (guessCount == 0){
+                // game over
+                imgLives.setImageResource(R.mipmap.hangman_game_guess8_easy);
+            } else if (guessCount == 1) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess7_easy);
+            } else if (guessCount == 2) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess6_easy);
+            } else if (guessCount == 3) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess5_easy);
+            } else if (guessCount == 4) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess4_easy);
+            } else if (guessCount == 5) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess3_easy);
+            } else if (guessCount == 6) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess2_easy);
+            } else if (guessCount == 7) {
+                imgLives.setImageResource(R.mipmap.hangman_game_guess1_easy);
+            } else {
+                // game start
+                imgLives.setImageResource(R.mipmap.hangman_game_start);
+            }
+        }
+    }
+
+    public void gameOver(){
+        btnGuess.setEnabled(false);
+    }
+
+    public void gameStart(){
+        btnGuess.setEnabled(true);
     }
 
     // ------------------------------------------------------------------------ private methods
