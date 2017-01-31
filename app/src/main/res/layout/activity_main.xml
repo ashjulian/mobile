@@ -9,17 +9,20 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
-    tools:context="com.example.ash.hangman.View">
+    tools:context="com.example.ash.hangman.MainView">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/lblGuesses"
         android:layout_marginBottom="15dp"
-        android:textSize="24sp"
-        android:text="sgdsdkgsdhs"
+        android:textSize="18sp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:maxLines = "3"
+        android:minLines="3"
+        android:scrollbars = "vertical"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -56,27 +59,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lblTopInfo"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:layout_marginTop="62dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/hangman_game_start"
         android:id="@+id/imgLives"
-        android:gravity="center"
+        android:layout_centerHorizontal="true"
         android:layout_above="@+id/lblWord"
         android:layout_below="@+id/btnGuess" />
 
-    <ImageView
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@android:drawable/bottom_bar"
         android:id="@+id/imgHeader"
         android:layout_marginBottom="25dp"
         android:layout_above="@+id/txtGuess"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/btn_banner" />
 
 </RelativeLayout>

@@ -1,8 +1,14 @@
 package com.example.ash.hangman;
 
+import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-
+import android.util.Log;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -10,13 +16,16 @@ import java.util.Arrays;
  * Created by Ash on 2016-12-04.
  */
 
-public class Hangman {
+public class Hangman implements Serializable{
+    // Constant with a file name
+    private static String FILE_NAME = "data.dat";
+    private static final long serialVersionUID = 5L;
 
     // singleton reference
     private static Hangman instance = null;
 
     // private variables
-    private Resources resources;
+    private transient Resources resources;
     private String guess;
     private String[] aryWords;
     private ArrayList<String> aryGuess;
@@ -28,7 +37,7 @@ public class Hangman {
     private String guessWord;
     private int guessCount;
     private int difficultyLevel;
-    private String difficultyMsg;
+    private Boolean loadFlag;
 
 
     // ----------------------------------------------- singleton constructor method
@@ -49,11 +58,15 @@ public class Hangman {
         errLong = "";
         errOther = "";
         errorMsg = "";
+        loadFlag = false;
 
         guessCount = 8;
         word = "";
-        guessWord = "";
         difficultyLevel = -1;
+
+        if (guessWord == null){
+            guessWord = "";
+        }
 
         // pass resources from the view
         resources = myResources;
@@ -63,6 +76,12 @@ public class Hangman {
         errOther = resources.getString(R.string.error);
 
         randomize();
+    }
+
+    // ------------------------------------------------------ set resources
+
+    public void setResources(Resources myResources){
+        resources = myResources;
     }
 
     // ------------------------------------------------ get/set methods
@@ -89,7 +108,7 @@ public class Hangman {
 
     public int getDifficultyLevel() {return difficultyLevel;}
 
-    public String getDifficultyMsg() {return difficultyMsg;}
+    public Boolean getLoadFlag() {return loadFlag;}
 
     // ------------------------------------------------ private methods
 
@@ -159,8 +178,7 @@ public class Hangman {
 
 
     private void randomize(){
-        //int number = (int) (Math.random() * 10);
-        int number = 0;
+        int number = (int) (Math.random() * 10);
         word = aryWords[number].toUpperCase();
 
         // create a hidden word
@@ -200,6 +218,7 @@ public class Hangman {
     }
 
     public Boolean output(){
+        // build a string to output to the user return false if string is error msg
         if (!checkDuplicates()){
             if (makeGuess()) {
                 if (checkWin()){
@@ -228,6 +247,9 @@ public class Hangman {
         if (guessWord.equals(word)){
             return true;
         } else {
+            if (guessCount == 0){
+                guessWord = word;
+            }
             return false;
         }
     }
@@ -245,19 +267,70 @@ public class Hangman {
         if (difficultyLevel == 1){
             aryWords = resources.getStringArray(R.array.aryMedium);
             guessCount = 6;
-            difficultyMsg = resources.getString(R.string.mediumDif);
 
         } else if (difficultyLevel == 2) {
             aryWords = resources.getStringArray(R.array.aryHard);
             guessCount = 5;
-            difficultyMsg = resources.getString(R.string.hardDif);
         } else {
             aryWords = resources.getStringArray(R.array.aryEasy);
             guessCount = 8;
-            difficultyMsg = resources.getString(R.string.easyDif);
         }
 
         randomize();
 
+    }
+
+    public void saveGame(Context context){
+        try {
+            //setup the streams
+            FileOutputStream outFileStream = context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
+            ObjectOutputStream outDataStream = new ObjectOutputStream(outFileStream);
+
+            //write values of primitive data types to the stream
+            outDataStream.writeObject(this);
+
+            //output done, so flush and close the stream
+            outDataStream.flush();
+            outDataStream.close();
+            outFileStream.close();
+
+            Log.d("Ash", "Saved Sucessfully!");
+
+        } catch (Exception e) {
+            Log.d("Ash","!!! EXCEPTION", e);
+        }
+    }
+
+    public Hangman loadGame(Context context) {
+        Hangman hangman = null;
+
+        try {
+            //setup file and stream
+            FileInputStream inFileStream = context.openFileInput(FILE_NAME);
+            ObjectInputStream inDataStream = new ObjectInputStream(inFileStream);
+
+            //read values back from the stream and display them
+            hangman = (Hangman) inDataStream.readObject();
+
+            inFileStream.close();
+            inDataStream.close();
+
+            Log.d("Ash", "Loaded successfully!");
+
+        } catch (Exception e) {
+            Log.d("Ash","!!! EXCEPTION", e);
+        }
+
+        return hangman;
+    }
+
+    public Boolean checkSave(Context context){
+        File file = context.getFileStreamPath(FILE_NAME);
+
+        if(file.exists()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

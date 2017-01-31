@@ -12,10 +12,11 @@
     <string name="mediumDif">The difficulty is set to : MEDIUM</string>
     <string name="hardDif">The difficulty is set to : HARD</string>
     <string name="dupGuess">You have already guessed this!</string>
+    <string name="gameOver">Click the menu to try again!</string>
 
     <string-array name="aryEasy">
         <item>prideful</item>
-        <item>shortest</item>
+        <item>shorts</item>
         <item>happy</item>
         <item>delivery</item>
         <item>planes</item>

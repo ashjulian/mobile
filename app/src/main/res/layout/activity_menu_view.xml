@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgReturn"
-        android:background="@mipmap/btn_resume_up"
+        android:background="@drawable/btn_resume"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/imgHard" />
 
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgReset"
-        android:background="@mipmap/btn_reset_up"
+        android:background="@drawable/btn_reset"
         android:layout_above="@+id/imgReturn"
         android:layout_alignStart="@+id/imgReturn" />
 
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgHard"
-        android:background="@mipmap/btn_hard_up"
+        android:background="@drawable/btn_hard"
         android:layout_below="@+id/imgMedium"
         android:layout_centerHorizontal="true" />
 
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgEasy"
-        android:background="@mipmap/btn_easy_up"
+        android:background="@drawable/btn_easy"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="11dp" />
@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgMedium"
-        android:background="@mipmap/btn_medium_up"
+        android:background="@drawable/btn_medium"
         android:layout_below="@+id/imgEasy"
         android:layout_centerHorizontal="true" />
 

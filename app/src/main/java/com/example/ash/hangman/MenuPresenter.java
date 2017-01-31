@@ -6,7 +6,6 @@ public class MenuPresenter {
     private MenuView menuView;
     private Hangman hangman;
 
-
     public MenuPresenter(MenuView myMenuView){
         menuView = myMenuView;
         hangman = hangman.getInstance(menuView.getResources());
@@ -33,7 +32,6 @@ public class MenuPresenter {
     }
 
     public void close(){
-
         menuView.finish();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.ash.hangman;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -60,11 +61,7 @@ public class MenuView extends AppCompatActivity {
                 presenter.close();
             }
         });
-    }
 
-    @Override
-    public void onResume(){
-        super.onResume();
         presenter = new MenuPresenter(this);
     }
 
@@ -89,4 +86,5 @@ public class MenuView extends AppCompatActivity {
         btnMedium.setEnabled(false);
         btnHard.setEnabled(true);
     }
+
 }

@@ -3,15 +3,41 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/imgHeader"
         android:layout_alignParentStart="true"
-        android:background="@android:drawable/title_bar"
+        android:src="@drawable/btn_banner"
+        android:background="@null"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/imgLives" />
+        android:layout_above="@+id/imgLives"
+        android:adjustViewBounds="false" />
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imgLives"
+        android:gravity="center"
+        android:layout_alignTop="@+id/lblTopInfo"
+        android:src="@drawable/hangman_game_start"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/lblWord"
+        android:layout_toStartOf="@+id/lblTopInfo" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:id="@+id/lblWord"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:text="AWORDYAY"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/lblGuesses" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -22,20 +48,23 @@
         android:id="@+id/txtGuess"
         android:gravity="center"
         android:digits="@string/limits"
+        android:text="dddddddddddddd"
         android:layout_below="@+id/lblTopInfo"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/imgLives" />
+        android:layout_alignStart="@+id/lblTopInfo" />
 
-
-    <ImageView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imgLives"
-        android:gravity="center"
-        android:background="@mipmap/hangman_game_start"
-        android:layout_alignTop="@+id/lblTopInfo"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/lblWord" />
+        android:id="@+id/lblGuesses"
+        android:textSize="16sp"
+        android:layout_marginBottom="13dp"
+        android:text="previous guesses: "
+        android:maxLines = "3"
+        android:minLines="3"
+        android:scrollbars = "vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/imgLives" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -43,40 +72,18 @@
         android:id="@+id/btnGuess"
         android:background="@drawable/btn_guess"
         android:layout_below="@+id/txtGuess"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="WORD"
-        android:id="@+id/lblWord"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/lblGuesses" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="13dp" />
 
     <TextView
         android:text="@string/top_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lblTopInfo"
-        android:textSize="24sp"
-        android:layout_marginTop="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/imgLives" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lblGuesses"
-        android:textSize="24sp"
-        android:text="sgdsdkgsdhs"
-        android:layout_above="@+id/lblWord"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/imgLives" />
+        android:id="@+id/lblTopInfo"
+        android:textSize="16sp"
+        android:layout_marginTop="93dp"
+        android:layout_marginEnd="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
